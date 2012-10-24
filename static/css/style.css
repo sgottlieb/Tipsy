@@ -1,0 +1,12 @@
+html{ 
+    background-color: pink;
+
+}
+#main-container{
+    width: 75%;
+    margin: 0 auto;
+}
+h1{
+    color: black;
+    font-family:helvetica;
+}

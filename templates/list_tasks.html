@@ -1,0 +1,40 @@
+<!Doctype html>
+<html>
+<head>
+    <title>tasks</title>
+    <link rel=stylesheet type=text/css href="/static/css/bootstrap.css">
+    <link rel=stylesheet type=text/css href='/static/css/style.css'>
+</head>
+<body>
+    <div id="main-container">
+        <div id ='task_list'>
+            <h1> Your incomplete Tasks</h1> 
+            <ul id="tasks">
+            {% for task in tasks %}
+                {% if task['completed_at'] == None %}
+                     <li>Task {{ task['id'] }}: {{ task['title'] }}
+                        <form method = "POST" action="/complete_task">
+                         <input type="submit" name = "complete" value="{{ task['id']  }}">
+                        </form>
+                     </li>
+                {% endif %}
+
+            {% endfor %}
+            </ul>
+            <form method="link" action="/new_task">
+                <input type="submit" value="new task">
+            </form>
+            <h1> Your Completed Tasks</h1> 
+            <ul id="tasks">
+            {% for task in tasks %}
+                {% if task['completed_at'] != None %}
+                     <li>Task {{ task['id'] }}: {{ task['title'] }}
+                     </li>
+                {% endif %}
+
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 
